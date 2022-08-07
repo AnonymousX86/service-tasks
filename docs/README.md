@@ -1,4 +1,4 @@
-# Service Task
+# Service Tasks
 
 GUI app for managing service tasks. Both for customers and for service 
 providers.
