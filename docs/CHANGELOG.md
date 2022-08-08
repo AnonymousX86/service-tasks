@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 ## Released
+#### Added
+- Icons for compiled file.
 #### Changed
 - Now specific version of KivyMD is required.
 
