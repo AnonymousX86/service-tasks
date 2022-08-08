@@ -73,7 +73,7 @@ Screen:
                     height: self.texture_size[1]
                     
                 MDLabel:
-                    text: 'v0.0.1'
+                    text: app.version
                     font_style: 'Caption'
                     size_hint_y: None
                     height: self.texture_size[1]

@@ -5,6 +5,8 @@
 ## Released
 #### Added
 - Icons for compiled file.
+#### Fixed
+- The version is now displayed based on app config. 
 #### Changed
 - Now specific version of KivyMD is required.
 
