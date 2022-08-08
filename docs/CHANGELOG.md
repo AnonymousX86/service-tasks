@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 ## Released
+#### Changed
+- Now specific version of KivyMD is required.
 
 ### [0.0.2] - 2022-08-08
 #### Added
