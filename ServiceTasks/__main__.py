@@ -85,44 +85,51 @@ Screen:
 '''
 
 
+class Commission:
+    def __init__(self, title, description, image_url):
+        self.title = title
+        self.description = description
+        self.image_url = image_url
+
+
 class CommissionCard(MDCard):
     title, description, image_url = \
         StringProperty(), StringProperty(), StringProperty()
 
     def __init__(self, commission, **kwargs):
         super().__init__(**kwargs)
-        self.title = commission['title']
-        self.description = commission['description']
-        self.image_url = commission['image_url']
+        self.title = commission.title
+        self.description = commission.description
+        self.image_url = commission.image_url
 
 
 class CommissionsGrid(GridLayout):
     def render_commissions(self, commissions=(
-            {
-                'title': 'Service Task 1',
-                'description': 'Description of Service Task 1',
-                'image_url': 'https://picsum.photos/200'
-            },
-            {
-                'title': 'Service Task 2',
-                'description': 'Description of Service Task 2',
-                'image_url': 'https://picsum.photos/200'
-            },
-            {
-                'title': 'Service Task 3',
-                'description': 'Description of Service Task 3',
-                'image_url': 'https://picsum.photos/200'
-            },
-            {
-                'title': 'Service Task 4',
-                'description': 'Description of Service Task 4',
-                'image_url': 'https://picsum.photos/200'
-            },
-            {
-                'title': 'Service Task 5',
-                'description': 'Description of Service Task 5',
-                'image_url': 'https://picsum.photos/200'
-            }
+            Commission(
+                'Service Task 1',
+                'Description of Service Task 1',
+                'https://picsum.photos/200'
+            ),
+            Commission(
+                'Service Task 2',
+                'Description of Service Task 2',
+                'https://picsum.photos/200'
+            ),
+            Commission(
+                'Service Task 3',
+                'Description of Service Task 3',
+                'https://picsum.photos/200'
+            ),
+            Commission(
+                'Service Task 4',
+                'Description of Service Task 4',
+                'https://picsum.photos/200'
+            ),
+            Commission(
+                'Service Task 5',
+                'Description of Service Task 5',
+                'https://picsum.photos/200'
+            )
     )):
         for commission in commissions:
             self.add_widget(CommissionCard(commission))
