@@ -1,5 +1,7 @@
+import os, sys
 from kivy import require as kivy_require
 from kivy.properties import StringProperty
+from kivy.resources import resource_add_path
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivymd.app import MDApp
@@ -93,4 +95,7 @@ def main():
 __all__ = ['main']
 
 if __name__ == '__main__':
+    if hasattr(sys, '_MEIPASS'):
+        # noinspection PyProtectedMember
+        resource_add_path(os.path.join(sys._MEIPASS))
     main()

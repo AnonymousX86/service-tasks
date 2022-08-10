@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+#### Fixed
+- KV template is now loaded in compiled EXE file.
+
 ## Released
 
 ### [0.0.3] - 2022-08-10
