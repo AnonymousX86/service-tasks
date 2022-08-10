@@ -46,11 +46,21 @@ Screen:
             
                 BoxLayout:
                     orientation: 'vertical'
+                    spacing: 10
                     
                     MDToolbar:
                         title: 'Service Tasks'
                         elevation: 10
                         left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+                        
+                    MDTextField:
+                        hint_text: 'Search'
+                        mode: 'rectangle'
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        size_hint: 0.5, None
+                        padding: '12dp'
+                        on_text: app.search(self.text)
+                        icon_right: 'magnify'
                             
                     CommissionsGrid:
                         id: commissions_grid
@@ -130,8 +140,13 @@ class CommissionsGrid(GridLayout):
                 'Description of Service Task 5',
                 'https://picsum.photos/200'
             )
-    )):
-        for commission in commissions:
+    ), search_key=''):
+        filtered_commissions = filter(
+            lambda c:
+                search_key.lower() in c.title.lower(),
+            commissions
+        ) if search_key else commissions
+        for commission in filtered_commissions:
             self.add_widget(CommissionCard(commission))
 
 
@@ -147,6 +162,11 @@ class MainApp(MDApp):
 
     def on_start(self):
         self.root.ids.commissions_grid.render_commissions()
+
+    def search(self, search_key):
+        commissions_grid = self.root.ids.commissions_grid
+        commissions_grid.clear_widgets()
+        commissions_grid.render_commissions(search_key=search_key)
 
 
 def main():
