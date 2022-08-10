@@ -1,4 +1,6 @@
-import os, sys
+import os
+import sys
+
 from kivy import require as kivy_require
 from kivy.properties import StringProperty
 from kivy.resources import resource_add_path
