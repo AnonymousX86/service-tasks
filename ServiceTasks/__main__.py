@@ -1,4 +1,3 @@
-from kivy.lang import Builder
 from kivy import require as kivy_require
 from kivy.properties import StringProperty
 from kivy.uix.boxlayout import BoxLayout
@@ -6,118 +5,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivymd.app import MDApp
 from kivymd.uix.card import MDCard
 
-KV = '''
-<NoSearchResultsCard>:
-    size_hint: 1, 1
-    orientation: 'vertical'
-    padding: 10
-    
-    Widget:
-        size_hint: 1, 1
-    
-    MDLabel:
-        size_hint: 1, None
-        text: 'No results found'
-        font_style: 'Subtitle1'
-        halign: 'center'
-        
-    MDLabel:
-        size_hint: 1, None
-        text: 'Try another search'
-        font_style: 'Caption'
-        halign: 'center'
-        
-    Widget:
-        size_hint: 1, 1
-
-
-<CommissionsGrid>:
-    cols: 3
-    spacing: 10
-    padding: 10
-
-
-<CommissionCard>:
-    size_hint: 1, 1
-    orientation: 'vertical'
-    padding: 10
-
-    AsyncImage:
-        size_hint: 1, 2
-        source: root.image_url
-    
-    MDLabel:
-        size_hint: 1, 1
-        text: root.title
-        font_style: 'Subtitle1'
-        
-    MDSeparator:
-        size_hint: 1, None
-    
-    MDLabel:
-        size_hint: 1, 1
-        text: root.description
-        font_style: 'Caption'
-
-
-Screen:
-
-    MDNavigationLayout:
-    
-        ScreenManager:
-            id: screen_manager
-        
-            Screen:
-            
-                BoxLayout:
-                    orientation: 'vertical'
-                    spacing: 10
-                    
-                    MDToolbar:
-                        title: 'Service Tasks'
-                        elevation: 10
-                        left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
-                        
-                    MDTextField:
-                        hint_text: 'Search'
-                        mode: 'rectangle'
-                        pos_hint: {'center_x': .5, 'center_y': .5}
-                        size_hint: 0.5, None
-                        padding: '12dp'
-                        on_text: app.search(self.text)
-                        icon_right: 'magnify'
-                            
-                    CommissionsGrid:
-                        id: commissions_grid
-                    
-        
-        MDNavigationDrawer:
-            id: nav_drawer
-        
-            ContentNavigationDrawer:
-                screen_manager: screen_manager
-                nav_drawer: nav_drawer
-                orientation: 'vertical'
-                padding: 20
-                spacing: 15
-            
-                MDLabel:
-                    text: 'Service Tasks'
-                    font_style: 'Body1'
-                    size_hint_y: None
-                    height: self.texture_size[1]
-                    
-                MDLabel:
-                    text: app.version
-                    font_style: 'Caption'
-                    size_hint_y: None
-                    height: self.texture_size[1]
-                    
-                MDSeparator:
-                
-                Widget:
-                    size_hint_y: 1
-'''
 kivy_require('2.1.0')
 
 
@@ -189,9 +76,6 @@ class ContentNavigationDrawer(BoxLayout):
 
 class MainApp(MDApp):
     version = '0.0.2'
-
-    def build(self):
-        return Builder.load_string(KV)
 
     def on_start(self):
         self.root.ids.commissions_grid.render_commissions()
