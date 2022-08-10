@@ -75,7 +75,7 @@ class ContentNavigationDrawer(BoxLayout):
 
 
 class MainApp(MDApp):
-    version = '0.0.2'
+    version = '0.0.3'
 
     def on_start(self):
         self.root.ids.commissions_grid.render_commissions()
