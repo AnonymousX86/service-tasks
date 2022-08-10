@@ -6,6 +6,30 @@ from kivymd.app import MDApp
 from kivymd.uix.card import MDCard
 
 KV = '''
+<NoSearchResultsCard>:
+    size_hint: 1, 1
+    orientation: 'vertical'
+    padding: 10
+    
+    Widget:
+        size_hint: 1, 1
+    
+    MDLabel:
+        size_hint: 1, None
+        text: 'No results found'
+        font_style: 'Subtitle1'
+        halign: 'center'
+        
+    MDLabel:
+        size_hint: 1, None
+        text: 'Try another search'
+        font_style: 'Caption'
+        halign: 'center'
+        
+    Widget:
+        size_hint: 1, 1
+
+
 <CommissionsGrid>:
     cols: 3
     spacing: 10
@@ -102,6 +126,10 @@ class Commission:
         self.image_url = image_url
 
 
+class NoSearchResultsCard(MDCard):
+    pass
+
+
 class CommissionCard(MDCard):
     title, description, image_url = \
         StringProperty(), StringProperty(), StringProperty()
@@ -141,13 +169,16 @@ class CommissionsGrid(GridLayout):
                 'https://picsum.photos/200'
             )
     ), search_key=''):
-        filtered_commissions = filter(
+        filtered_commissions: tuple[Commission] = tuple(filter(
             lambda c:
                 search_key.lower() in c.title.lower(),
             commissions
-        ) if search_key else commissions
-        for commission in filtered_commissions:
-            self.add_widget(CommissionCard(commission))
+        )) if search_key else commissions
+        if not filtered_commissions:
+            self.add_widget(NoSearchResultsCard())
+        else:
+            for commission in filtered_commissions:
+                self.add_widget(CommissionCard(commission))
 
 
 class ContentNavigationDrawer(BoxLayout):

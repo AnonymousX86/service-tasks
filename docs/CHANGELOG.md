@@ -7,6 +7,7 @@
 - Icons for compiled file.
 - Unified commission class.
 - Search function for commissions.
+- Info about no search results.
 #### Fixed
 - The version is now displayed based on app config. 
 #### Changed
