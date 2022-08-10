@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy import require as kivy_require
 from kivy.properties import StringProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
@@ -117,6 +118,7 @@ Screen:
                 Widget:
                     size_hint_y: 1
 '''
+kivy_require('2.1.0')
 
 
 class Commission:

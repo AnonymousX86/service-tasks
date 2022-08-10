@@ -8,6 +8,7 @@
 - Unified commission class.
 - Search function for commissions.
 - Info about no search results.
+- Kivy's require method.
 #### Fixed
 - The version is now displayed based on app config. 
 #### Changed
