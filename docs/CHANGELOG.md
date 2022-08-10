@@ -10,7 +10,8 @@
 - Info about no search results.
 - Kivy's require method.
 #### Fixed
-- The version is now displayed based on app config. 
+- The version is now displayed based on app config.
+- PEP8.
 #### Changed
 - Now specific version of KivyMD is required.
 

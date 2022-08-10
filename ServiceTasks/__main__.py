@@ -173,7 +173,7 @@ class CommissionsGrid(GridLayout):
     ), search_key=''):
         filtered_commissions: tuple[Commission] = tuple(filter(
             lambda c:
-                search_key.lower() in c.title.lower(),
+            search_key.lower() in c.title.lower(),
             commissions
         )) if search_key else commissions
         if not filtered_commissions:
@@ -207,7 +207,6 @@ def main():
 
 
 __all__ = ['main']
-
 
 if __name__ == '__main__':
     main()
